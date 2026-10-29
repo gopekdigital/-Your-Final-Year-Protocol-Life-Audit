@@ -3,6 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <script>
+      (function() {
+        try {
+          localStorage.removeItem('gopek_digital_theme_preference');
+          var saved = localStorage.getItem('gopek_digital_theme_choice');
+          var root = document.documentElement;
+          var meta = document.querySelector('meta[name="color-scheme"]');
+          if (saved === 'dark') {
+            root.classList.add('dark');
+            if (meta) meta.setAttribute('content', 'dark');
+          } else {
+            root.classList.remove('dark');
+            if (meta) meta.setAttribute('content', 'light');
+          }
+        } catch (_) {}
+      })();
+    </script>
     <script>
       (function() {
         try {

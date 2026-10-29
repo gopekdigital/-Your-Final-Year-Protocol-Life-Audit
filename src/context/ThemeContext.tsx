@@ -10,47 +10,77 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const THEME_STORAGE_KEY = 'gopek_digital_theme_preference';
+const THEME_STORAGE_KEY = 'gopek_digital_theme_choice';
+const LEGACY_THEME_STORAGE_KEY = 'gopek_digital_theme_preference';
+
+function getInitialTheme(): Theme {
+  try {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(LEGACY_THEME_STORAGE_KEY);
+      const saved = localStorage.getItem(THEME_STORAGE_KEY);
+      if (saved === 'dark' || saved === 'light') {
+        return saved;
+      }
+    }
+  } catch {
+    // ignore
+  }
+  return 'light';
+}
+
+function persistExplicitTheme(nextTheme: Theme): void {
+  try {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    }
+  } catch {
+    // ignore
+  }
+}
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem(THEME_STORAGE_KEY);
-        if (saved === 'dark' || saved === 'light') {
-          return saved;
-        }
-      }
-    } catch {
-      // ignore
-    }
-    return 'dark'; // Default to dark mode for first-time visitors per specification
-  });
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = document.documentElement;
     const body = document.body;
-    
+    const meta = document.querySelector('meta[name="color-scheme"]');
+
     if (theme === 'dark') {
       root.classList.add('dark');
       body.classList.add('dark');
+      if (meta) meta.setAttribute('content', 'dark');
     } else {
       root.classList.remove('dark');
       body.classList.remove('dark');
-    }
-    
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, theme);
-    } catch {
-      // ignore
+      if (meta) meta.setAttribute('content', 'light');
     }
   }, [theme]);
 
+  useEffect(() => {
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key !== THEME_STORAGE_KEY) return;
+      if (event.newValue === 'dark' || event.newValue === 'light') {
+        setThemeState(event.newValue);
+      } else if (event.newValue === null) {
+        setThemeState('light');
+      }
+    };
+
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
   const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'));
+    setThemeState((prev) => {
+      const next: Theme = prev === 'light' ? 'dark' : 'light';
+      persistExplicitTheme(next);
+      return next;
+    });
   };
 
   const setTheme = (newTheme: Theme) => {
+    persistExplicitTheme(newTheme);
     setThemeState(newTheme);
   };
 
