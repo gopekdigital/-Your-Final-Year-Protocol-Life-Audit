@@ -1,0 +1,6 @@
+{
+  "name": "GoPek Digital - Your Final Year Protocol & Life Audit",
+  "description": "The execution system for the person you still have time to become. Official website for YOUR FINAL YEAR PROTOCOL and the BEFORE THE YEAR ENDS life audit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

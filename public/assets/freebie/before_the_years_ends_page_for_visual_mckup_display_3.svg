@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 950" width="700" height="950" style="background:#FAF8F2; font-family:'Georgia', serif;">
+    <!-- Document Card Background & Border -->
+    <rect width="700" height="950" fill="#FCFAF5" stroke="#E2DCD0" stroke-width="2"/>
+    
+    <!-- Top Meta Tag -->
+    <text x="60" y="70" font-family="'Space Grotesk', monospace, sans-serif" font-size="11" letter-spacing="3" fill="#8C7A58">03  /  MEASURE</text>
+    <line x1="60" y1="85" x2="640" y2="85" stroke="#A68D5D" stroke-width="1.5" />
+    
+    <!-- Large Heading -->
+    <text x="60" y="145" font-family="'Cinzel', 'Times New Roman', serif" font-weight="bold" font-size="34" letter-spacing="1" fill="#1A1815">THE SCORE</text>
+    
+    <!-- Subtitle -->
+    <text x="60" y="180" font-style="italic" font-size="16" fill="#595245">Go back to your graveyard and count. The calculation is deliberately simple.</text>
+    
+    <!-- Rule bar / Table Header -->
+    <rect x="60" y="215" width="580" height="34" fill="#EFE8D8" rx="2" stroke="#DFD4BE"/>
+    <text x="75" y="238" font-family="'Space Grotesk', monospace, sans-serif" font-size="11" font-weight="bold" letter-spacing="1.5" fill="#544834">PROMISES MADE | PROMISES KEPT | PROMISES BROKEN | PROMISE-KEEPING RATE %</text>
+    
+    <!-- Teaser Line 1 -->
+    <text x="60" y="285" font-size="14" fill="#2E2A24">Rate = promises kept ÷ promises made × 100</text>
+    <line x1="60" y1="300" x2="640" y2="300" stroke="#EFE9DC" stroke-width="1"/>
+    
+    <!-- Teaser Line 2 -->
+    <text x="60" y="335" font-size="14" fill="#3D372E">This number is not a judgment of your worth. It is evidence of your current execution pattern.</text>
+    <line x1="60" y1="350" x2="640" y2="350" stroke="#EFE9DC" stroke-width="1"/>
+    
+    <!-- Teaser Line 3 -->
+    <text x="60" y="385" font-size="13" fill="#524A3E">PATTERN DETECTOR: Why did you break them? Tick every reason that applies.</text>
+    <line x1="60" y1="400" x2="640" y2="400" stroke="#EFE9DC" stroke-width="1"/>
+
+    <!-- Teaser Line 4 -->
+    <text x="60" y="435" font-size="13" fill="#524A3E">[ ] I kept postponing it   [ ] I started but couldn't stay consistent   [ ] I relied on motivation</text>
+    <line x1="60" y1="450" x2="640" y2="450" stroke="#EFE9DC" stroke-width="1"/>
+    
+    <!-- Document Footer -->
+    <text x="60" y="910" font-family="'Space Grotesk', monospace" font-size="10" letter-spacing="2" fill="#A89B84">BEFORE THE YEAR ENDS  ·  THE BROKEN PROMISES AUDIT</text>
+    <text x="610" y="910" font-family="'Space Grotesk', monospace" font-size="11" font-weight="bold" fill="#8C7A58">3 / 8</text>
+  </svg>
