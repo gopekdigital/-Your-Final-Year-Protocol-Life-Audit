@@ -269,7 +269,7 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
         </div>
 
         {/* Full-Banner Centered Review Rating & Theme Toggle */}
-        <div className="relative z-10 w-full flex flex-col items-center justify-center gap-2 px-4 pt-4 sm:pt-5 lg:pt-5">
+        <div className="relative z-10 w-full flex flex-col items-center justify-center gap-4 sm:gap-5 px-4 pt-7 sm:pt-9 lg:pt-10">
           {/* Exact Rating: ⭐⭐⭐⭐⭐ 5.0 | 385 REVIEWS */}
           <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#090A0F]/88 backdrop-blur-md border border-white/30 text-xs sm:text-sm font-semibold tracking-wide text-white shadow-[0_4px_20px_rgba(0,0,0,0.65)]">
             <div className="flex items-center text-[#FACC15] gap-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
