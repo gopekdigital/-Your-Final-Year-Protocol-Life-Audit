@@ -13,7 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
     <header
       className={`sticky top-0 z-40 w-full backdrop-blur-md transition-colors ${
         isPaidPage
-          ? 'bg-[#FF3D00] border-b border-[#E03600] shadow-sm'
+          ? 'bg-black border-b border-neutral-900 shadow-sm'
           : 'border-b border-[#E2E2E2] dark:border-neutral-800 bg-[#F4F4F4]/95 dark:bg-[#0D0E11]/95'
       }`}
     >
@@ -29,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           <div
             className={`w-7.5 h-7.5 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-display font-black text-base shadow-sm group-hover:scale-105 transition-transform ${
               isPaidPage
-                ? 'bg-white text-[#FF3D00]'
+                ? 'bg-neutral-950 text-[#FF3D00] border border-[#FF3D00]/40'
                 : 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-950'
             }`}
           >
@@ -38,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           <div className="flex flex-col">
             <span
               className={`font-display font-bold tracking-wider text-[13px] sm:text-sm uppercase leading-tight ${
-                isPaidPage ? 'text-white' : 'text-neutral-950 dark:text-white'
+                isPaidPage ? 'text-[#FF3D00]' : 'text-neutral-950 dark:text-white'
               }`}
             >
               GoPekDigital
