@@ -349,7 +349,7 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
                   <span className="font-bold text-[#FF3D00]">
                     Your Final Year Protocol
                   </span>
-                  ; a non-negotiable system designed to confront unfulfilled potential, expose wasted time, and help you reclaim the person you still have time to become. A system to end self-deception, force alignment, and weaponize your remaining days before another year disappears.
+                  ; a non-negotiable system designed to confront unfulfilled potential, expose wasted time, and help you reclaim the person you still have time to become.
                 </p>
 
                 <p className="font-extrabold text-[17px] sm:text-[19px] tracking-tight leading-snug text-[#111215] dark:text-white">
@@ -358,12 +358,12 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
 
                 <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/[0.035] dark:bg-white/[0.04] border border-neutral-200/90 dark:border-white/10 transition-colors duration-200">
                   <p className="text-[#22252D] dark:text-neutral-200 leading-relaxed">
-                    You don&apos;t lack potential; you lack a system that works when motivation fails. You&apos;ve tried motivational speeches &amp; podcasts, viral quotes, Monday resets but all failed. How many times have you promised yourself a breakthrough, only to return to the exact same unfulfilled routines, repeating the same patterns.
+                    You&apos;ve tried motivational speeches &amp; podcasts, viral quotes, Monday resets but all failed. How many times have you promised yourself a breakthrough, only to return to the exact same unfulfilled routines, repeating the same patterns?
                   </p>
                 </div>
 
                 <p className="font-extrabold text-lg sm:text-xl text-[#FF3D00] leading-snug pt-1">
-                  Stop waiting for a fresh start. You need a SYSTEM that doesn&apos;t care how you feel.
+                  Stop waiting for a fresh start. You don&apos;t lack potential; you need a SYSTEM that doesn&apos;t care how you feel.
                 </p>
               </div>
 
@@ -408,7 +408,7 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
                 </ul>
 
                 <p className="mb-5 font-bold text-emerald-700 dark:text-emerald-400">
-                  It will confront you, expose you, and heelp you to build a new reality.
+                  It will confront you, expose you, and help you to build a new reality.
                 </p>
 
                 <div className="mb-5 p-4 sm:p-5 rounded-2xl bg-neutral-900/[0.035] dark:bg-white/[0.04] border border-neutral-200/90 dark:border-white/10 transition-colors duration-200">
@@ -1075,6 +1075,51 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
             </p>
           </div>
 
+        </div>
+      </section>
+
+      {/* =========================================================================
+          STANDALONE IMPACT STATEMENT (BETWEEN FIRST CTA & CONGRATULATIONS CARD)
+      ========================================================================= */}
+      <section
+        aria-label="Core Conviction"
+        className="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-[#F4F4F4] dark:bg-[#0C0D11] border-b border-[#E2E2E2] dark:border-neutral-800 transition-colors duration-200"
+      >
+        <div className="max-w-2xl mx-auto">
+          <div
+            data-scroll-pop="true"
+            className="scroll-pop-holder relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-[#FFFBF9] to-[#FFF5F0] dark:from-[#111319] dark:via-[#13151D] dark:to-[#17141A] border border-orange-500/25 dark:border-orange-500/30 border-l-[3.5px] border-l-[#FF3D00] shadow-[0_10px_30px_-12px_rgba(255,61,0,0.14)] dark:shadow-[0_12px_36px_-12px_rgba(0,0,0,0.7)] px-6 py-6 sm:px-8 sm:py-7 transition-colors duration-200"
+          >
+            {/* Elegant Ambient Watermark Quotation Detail */}
+            <span
+              aria-hidden="true"
+              className="absolute -top-3 right-4 select-none pointer-events-none font-serif text-7xl sm:text-8xl text-[#FF3D00]/10 dark:text-[#FF3D00]/15 leading-none"
+            >
+              &rdquo;
+            </span>
+
+            {/* Subtle Warm Amber Glow Behind Text */}
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FF3D00]/[0.06] dark:bg-[#FF3D00]/[0.08] rounded-full blur-2xl pointer-events-none"
+            />
+
+            <p className="relative z-10 font-sans text-[15px] sm:text-[17px] leading-relaxed sm:leading-[1.65] text-[#22252D] dark:text-neutral-200 tracking-normal text-left sm:text-center">
+              A system to{' '}
+              <strong className="font-extrabold text-neutral-950 dark:text-white">
+                end self-deception
+              </strong>
+              ,{' '}
+              <strong className="font-extrabold text-neutral-950 dark:text-white">
+                force alignment
+              </strong>
+              , and{' '}
+              <strong className="font-extrabold text-[#FF3D00]">
+                weaponize your remaining days
+              </strong>{' '}
+              before another year disappears.
+            </p>
+          </div>
         </div>
       </section>
 
