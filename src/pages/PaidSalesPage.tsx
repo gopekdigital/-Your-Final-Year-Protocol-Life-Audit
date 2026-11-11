@@ -29,6 +29,12 @@ const COMPANION_BOOK_MOCKUP_SRC = '/assets/aistudio/Picsart_26-10-27_20-33-51-38
 const SCROLL_POP_VISIBILITY_RATIO = 0.4;
 const SCROLL_POP_DELAY_MS = 1500;
 
+const TYPEWRITER_WORDS = ['LIFE', 'FINANCES', 'BUSINESS', 'CAREER', 'RELATIONSHIPS'] as const;
+const TYPING_SPEED_MS = 100;
+const ERASING_SPEED_MS = 60;
+const WORD_PAUSE_MS = 1000;
+const EMPTY_PAUSE_MS = 250;
+
 const TESTIMONIAL_IMAGES = [
   {
     src: '/assets/aistudio/testimonial_1_fd4406a5.jpeg',
@@ -73,15 +79,22 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
       ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
       : false
   );
+  const [currentWordText, setCurrentWordText] = useState('LIFE');
+  const [isTypewriterStarted, setIsTypewriterStarted] = useState(false);
   const pageRootRef = useRef<HTMLDivElement | null>(null);
   const heroVideoRef = useRef<HTMLVideoElement | null>(null);
   const companionHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const companionRevealTimerRef = useRef<number | null>(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const typewriterTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     return () => {
       if (companionRevealTimerRef.current !== null) {
         window.clearTimeout(companionRevealTimerRef.current);
+      }
+      if (typewriterTimerRef.current !== null) {
+        window.clearTimeout(typewriterTimerRef.current);
       }
     };
   }, []);
@@ -196,6 +209,87 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
       pendingTimers.clear();
     };
   }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    const headingEl = headingRef.current;
+    if (!headingEl || typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') {
+      setIsTypewriterStarted(true);
+      return;
+    }
+
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    let hasTriggered = false;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasTriggered) {
+            hasTriggered = true;
+            observer.disconnect();
+            setIsTypewriterStarted(true);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(headingEl);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [prefersReducedMotion]);
+
+  useEffect(() => {
+    if (!isTypewriterStarted || prefersReducedMotion) {
+      return;
+    }
+
+    let wordIndex = 0;
+    let charIndex = TYPEWRITER_WORDS[0].length; // Starts at 'LIFE' (length 4)
+    let isDeleting = true; // After initial pause on 'LIFE', next action is deleting
+
+    const step = () => {
+      const currentTargetWord = TYPEWRITER_WORDS[wordIndex];
+
+      if (isDeleting) {
+        if (charIndex > 0) {
+          charIndex--;
+          setCurrentWordText(currentTargetWord.slice(0, charIndex));
+          typewriterTimerRef.current = window.setTimeout(step, ERASING_SPEED_MS);
+        } else {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % TYPEWRITER_WORDS.length;
+          typewriterTimerRef.current = window.setTimeout(step, EMPTY_PAUSE_MS);
+        }
+      } else {
+        if (charIndex < currentTargetWord.length) {
+          charIndex++;
+          setCurrentWordText(currentTargetWord.slice(0, charIndex));
+          typewriterTimerRef.current = window.setTimeout(step, TYPING_SPEED_MS);
+        } else {
+          isDeleting = true;
+          typewriterTimerRef.current = window.setTimeout(step, WORD_PAUSE_MS);
+        }
+      }
+    };
+
+    // Initial pause on the first word 'LIFE' before beginning the backspace
+    typewriterTimerRef.current = window.setTimeout(step, WORD_PAUSE_MS);
+
+    return () => {
+      if (typewriterTimerRef.current !== null) {
+        window.clearTimeout(typewriterTimerRef.current);
+        typewriterTimerRef.current = null;
+      }
+    };
+  }, [isTypewriterStarted, prefersReducedMotion]);
 
   const handleRevealCompanion = () => {
     if (companionStage !== 'collapsed') return;
@@ -333,8 +427,24 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
           
           <div className="max-w-4xl mx-auto text-center mb-10">
             {/* Exact Section Heading — Preserved Outside & Above the Content Card */}
-            <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-950 dark:text-white uppercase leading-tight">
-              WHAT IF ONE DOWNLOAD COULD CHANGE YOUR LIFE?
+            <h2
+              ref={headingRef}
+              className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-950 dark:text-white uppercase leading-tight"
+            >
+              WHAT IF ONE DOWNLOAD COULD CHANGE{' '}
+              <span className="inline-block whitespace-nowrap">
+                <span className="text-[#FF3D00]">YOUR</span>{' '}
+                <span className="text-[#FF3D00]">{currentWordText}</span>
+                {!prefersReducedMotion && (
+                  <span
+                    aria-hidden="true"
+                    className="typewriter-cursor text-[#FF3D00] font-sans font-light select-none inline-block ml-0.5"
+                  >
+                    |
+                  </span>
+                )}
+                <span className="text-neutral-950 dark:text-white">?</span>
+              </span>
             </h2>
           </div>
 
@@ -834,7 +944,7 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
           </div>
 
           <div className="mt-8 text-center text-xs text-neutral-500 dark:text-neutral-400 font-mono">
-            * All screenshot testimonials above are preserved directly from real community threads and client emails.
+            * All screenshot testimonials above are preserved directly from real community threads and client emails. Names and usernames have been obscured to protect contributors’ privacy.
           </div>
 
         </div>
@@ -967,7 +1077,7 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
               PRODUCT VERSIONS — DISPLAY EXACTLY
             </h3>
             <p className="text-sm sm:text-base text-neutral-200 max-w-2xl mx-auto leading-relaxed">
-              Your Final Year Protocol is delivered in two digital formats (PDF) containing the exact same unshakeable execution system. Choose your version below:
+              Your Final Year Protocol is delivered in two digital formats (PDF) containing the exact same unshakeable execution system:
             </p>
           </div>
 
@@ -1353,7 +1463,6 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-5 rounded-full text-base sm:text-lg font-black bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 hover:bg-[#FF3D00] hover:text-white dark:hover:bg-[#FF3D00] dark:hover:text-white shadow-2xl transform hover:-translate-y-1 hover:scale-105 active:translate-y-0 transition-all duration-200 cursor-pointer"
             >
-              <Zap className="w-5 h-5 text-[#FF3D00] fill-current" />
               <span>
                 ⚡ ACTIVATE YOUR PROTOCOL INSTANTLY (<span className="line-through opacity-70">$67</span>) $27
               </span>

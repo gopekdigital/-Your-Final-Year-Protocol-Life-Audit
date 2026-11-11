@@ -5,7 +5,6 @@ import {
   Star,
   ArrowRight,
   Download,
-  Zap,
   Smartphone,
   Laptop
 } from 'lucide-react';
@@ -106,7 +105,7 @@ export const FreebieLandingPage: React.FC<FreebieLandingPageProps> = () => {
               <Star className="w-4 h-4 fill-amber-300 text-amber-300" />
               <Star className="w-4 h-4 fill-amber-300 text-amber-300" />
             </div>
-            <span className="font-extrabold ml-1 text-white">5</span>
+            <span className="font-extrabold ml-1 text-white">5.0</span>
             <span className="text-white/40 font-normal">|</span>
             <span className="text-white uppercase tracking-wider text-xs font-mono font-bold">
               1,574 DOWNLOADS
@@ -480,7 +479,7 @@ export const FreebieLandingPage: React.FC<FreebieLandingPageProps> = () => {
                       {t.name}
                     </span>
                     <span className="text-[10px] font-mono text-[#DDD6FE] uppercase tracking-widest font-bold">
-                      Audit #{idx + 1}
+                      #{idx + 1}
                     </span>
                   </div>
                   <p className="text-sm text-[#F1EFFA] leading-relaxed font-normal">
@@ -682,7 +681,7 @@ export const FreebieLandingPage: React.FC<FreebieLandingPageProps> = () => {
           </div>
 
           <p className="text-sm sm:text-base text-[#F3F1FC] mb-8 max-w-2xl mx-auto leading-relaxed">
-            Before The Year Ends is delivered in two digital formats (PDF) containing the exact same life-reset experience. Choose your version below:
+            Before The Year Ends is delivered in two digital formats (PDF) containing the exact same life-reset experience:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto mb-8">
@@ -753,7 +752,6 @@ export const FreebieLandingPage: React.FC<FreebieLandingPageProps> = () => {
               rel="noopener noreferrer"
               className="relative z-10 inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-5 rounded-full text-base sm:text-lg font-black bg-gradient-to-r from-[#F59E0B] via-[#FB923C] to-[#F97316] hover:from-[#FBBF24] hover:via-[#FB923C] hover:to-[#EA580C] text-[#0B0C18] shadow-[0_12px_35px_-6px_rgba(249,115,22,0.5)] hover:shadow-[0_16px_42px_-6px_rgba(249,115,22,0.65)] transform hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 transition-all duration-200 cursor-pointer"
             >
-              <Zap className="w-5 h-5 fill-[#0B0C18]" />
               <span>⚡ RECLAIM YOUR REALITY: FREE DOWNLOAD</span>
               <ArrowRight className="w-5 h-5" />
             </a>
