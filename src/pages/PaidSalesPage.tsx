@@ -30,9 +30,9 @@ const SCROLL_POP_VISIBILITY_RATIO = 0.4;
 const SCROLL_POP_DELAY_MS = 1500;
 
 const TYPEWRITER_WORDS = ['LIFE', 'FINANCES', 'BUSINESS', 'CAREER', 'RELATIONSHIPS'] as const;
-const TYPING_SPEED_MS = 100;
-const ERASING_SPEED_MS = 60;
-const WORD_PAUSE_MS = 1000;
+const TYPING_SPEED_MS = 160;
+const ERASING_SPEED_MS = 110;
+const WORD_PAUSE_MS = 2200;
 const EMPTY_PAUSE_MS = 250;
 
 const TESTIMONIAL_IMAGES = [
@@ -456,7 +456,7 @@ export const PaidSalesPage: React.FC<PaidSalesPageProps> = () => {
               <div className="lg:col-span-7 space-y-5 text-left text-base sm:text-[17px] text-[#22252D] dark:text-neutral-200 leading-relaxed font-normal">
                 <p>
                   Meet{' '}
-                  <span className="font-bold text-[#FF3D00]">
+                  <span className="font-bold text-[#174A78] dark:text-[#6BA4D8]">
                     Your Final Year Protocol
                   </span>
                   ; a non-negotiable system designed to confront unfulfilled potential, expose wasted time, and help you reclaim the person you still have time to become.
